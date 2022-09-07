@@ -13,6 +13,7 @@ dist-ssr
 *.local
 .dfx/
 
+
 # Editor directories and files
 .vscode
 !.vscode/extensions.json

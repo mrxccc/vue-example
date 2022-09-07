@@ -27,9 +27,15 @@ const client = createClient({
     dev: import.meta.env.DEV,
   },
 })
+  async function sayHi() {
+    console.log(vueapp_backend)
+    const msg = await vueapp_backend.vueapp_backend.greet("Jack");
+    alert(msg);
+  }
 </script>
 
 <template>
+  <button @click="sayHi">点击这里sayHi</button>
   <Connect2ICProvider :client="client">
     <div class="App">
       <div class="auth-section">
