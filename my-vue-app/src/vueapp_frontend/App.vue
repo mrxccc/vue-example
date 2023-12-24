@@ -4,7 +4,7 @@ import logo from "../assets/dfinity.svg"
  * Connect2ic provides essential utilities for IC app development
  */
 import { createClient } from "@connect2ic/core"
-import { walletProviders,defaultProviders } from "@connect2ic/core/providers"
+import { walletProviders, defaultProviders } from "@connect2ic/core/providers"
 import { ConnectButton, ConnectDialog, Connect2ICProvider } from "@connect2ic/vue"
 import "@connect2ic/core/style.css"
 /*
@@ -17,25 +17,25 @@ import * as vueapp_backend from "../../.dfx/local/canisters/vueapp_backend"
 import Counter from "../components/Counter.vue"
 import Profile from "../components/Profile.vue"
 import Transfer from "../components/Transfer.vue"
-
 const client = createClient({
   canisters: {
     vueapp_backend,
   },
-  providers: walletProviders,
+  providers: defaultProviders,
   globalProviderConfig: {
     dev: import.meta.env.DEV,
   },
 })
-  async function sayHi() {
-    console.log(vueapp_backend)
-    const msg = await vueapp_backend.vueapp_backend.greet("Jack");
-    alert(msg);
-  }
+async function sayHi() {
+  console.log(vueapp_backend)
+  const msg = await vueapp_backend.vueapp_backend.greet("Jack");
+  console.log(msg)
+  alert(msg);
+}
 </script>
 
 <template>
-  <button @click="sayHi">点击这里sayHi</button>
+  <button @click="sayHi">点击这里sayHi aaa</button>
   <Connect2ICProvider :client="client">
     <div class="App">
       <div class="auth-section">
@@ -57,6 +57,7 @@ const client = createClient({
         <!-- <Counter /> -->
         <Profile />
         <Transfer />
+        <Counter />
       </div>
     </div>
   </Connect2ICProvider>
@@ -66,8 +67,8 @@ const client = createClient({
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-  sans-serif;
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #424242;

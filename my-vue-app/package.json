@@ -6,14 +6,16 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "prebuild": "npm run copy:types",
+    "preview": "vite preview",
+    "copy:types": "rsync -avr .dfx/$(echo ${DFX_NETWORK:-'**'})/canisters/** --exclude='assets/' --exclude='idl/' --exclude='*.wasm' --delete src/declarations"
   },
   "dependencies": {
     "@connect2ic/core": "^0.1.6",
     "@connect2ic/vue": "^0.1.1",
-    "@dfinity/agent": "^0.11.3",
-    "@dfinity/candid": "^0.11.3",
-    "@dfinity/principal": "^0.11.3",
+    "@dfinity/agent": "^0.20.2",
+    "@dfinity/candid": "^0.20.2",
+    "@dfinity/principal": "^0.20.2",
     "vue": "^3.2.37"
   },
   "devDependencies": {
